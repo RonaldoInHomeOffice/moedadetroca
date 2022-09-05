@@ -1,0 +1,76 @@
+<!-- formgroup of atividadeForm -->
+<form [formGroup]="atividadeForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="nome">Nome da atividade</label>
+                <input type="text" class="form-control" id="nome" formControlName="nome">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="quantidadeMoedas">Quantidade de moedas</label>
+                <input type="number" class="form-control" id="quantidadeMoedas" formControlName="quantidadeMoedas">
+            </div>
+        </div>
+        <!-- dropdown if moedas -->
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="moeda">Moeda</label>
+                <select class="form-control" id="moeda" formControlName="moeda">
+                    <option *ngFor="let moeda of moedas" [ngValue]="moeda">{{moeda.nome}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="col-md-12 pull-right" style="margin-top:25px;">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
+    </div>
+    <br />
+
+
+</form>
+
+<!-- list of atividade   -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title"> Atividades </h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th>
+                                Nome
+                            </th>
+                            <th>
+                                Quantidade de moedas
+                            </th>
+                            <th>
+                                Ações
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let atividade of atividades">
+                                <td>
+                                    {{ atividade.nome }}
+                                </td>
+                                <td>
+                                    {{ atividade.quantidadeMoedas }}
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary" (click)="editAtividade(atividade)">Editar</button>
+                                    <button class="btn btn-danger" (click)="deleteAtividade(atividade)">Excluir</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,18 +1,33 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MoedaProvider } from './providers/moeda-provider';
+import { TopBarComponent } from './pages/top-bar/top-bar.component';
+import { AtividadesComponent } from './pages/atividades/atividades.component';
+import { RecompensaComponent } from './pages/recompensa/recompensa.component';
+import { MoedasComponent } from './pages/moedas/moedas.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ToastController } from "toast-controller";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TopBarComponent,
+    AtividadesComponent,
+    RecompensaComponent,
+    MoedasComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    MoedaProvider,
+  ],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

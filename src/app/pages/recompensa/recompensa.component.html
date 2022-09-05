@@ -1,0 +1,114 @@
+<!-- formgroup of recompensaForm -->
+<form [formGroup]="recompensaForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+
+        <!-- dropdown if atividades -->
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="atividade">Atividade</label>
+                <select class="form-control" id="atividade" formControlName="atividade"
+                    (change)="selectAtividade($event)">
+                    <option *ngFor="let atividade of atividades" [ngValue]="atividade">{{atividade.nome}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="data">Realizada em:</label>
+                <input type="date" class="form-control" id="data" formControlName="data">
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="tempoTotal">Tempo Total</label>
+                <input type="number" class="form-control" readonly id="tempoTotal" formControlName="tempoTotal">
+            </div>
+        </div>
+        <!-- checkbox utilizada -->
+        <div class="col-md-2">
+            <div class="form-check" style="margin-top:25px;">
+                <label for="utilizada">Utilizada</label>
+                <input type="checkbox" class="form-check-input" id="utilizada" formControlName="utilizada">
+            </div>
+        </div>
+
+
+        <div class="col-md-2">
+            <div class="col-md-12 pull-right" style="margin-top:25px;">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<br />
+
+<!-- list of recompensas -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title"> Recompensas </h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th>
+                                Atividade
+                            </th>
+                            <th>
+                                Data
+                            </th>
+                            <th>
+                                Tempo Total
+                            </th>
+                            <th>
+                                Recompensa
+                            </th>
+                            <th>
+                                Utilizada
+                            </th>
+                            <th>
+                                Data Utilização
+                            </th>
+                            <th>
+                                Ações
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let recompensa of recompensas">
+                                <td>
+                                    {{recompensa.atividade.nome}}
+                                </td>
+                                <td>
+                                    {{recompensa.data}}
+                                </td>
+                                <td>
+                                    {{recompensa.tempoTotal}}
+                                </td>
+                                <td>
+                                    {{recompensa.atividade.moeda.nome}}
+                                </td>
+                                <td>
+                                    {{recompensa.utilizada}}
+                                </td>
+                                <td>
+                                    {{recompensa.dataUtilizacao}}
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary"
+                                        (click)="edit(recompensa)">Editar</button>
+                                    <button type="button" class="btn btn-danger"
+                                        (click)="delete(recompensa)">Excluir</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>

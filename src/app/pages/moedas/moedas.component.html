@@ -1,0 +1,77 @@
+<form [formGroup]="moedaTrocaForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="nome">Nome da moeda</label>
+                    <input type="text" class="form-control" id="nome" formControlName="nome">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="sigla">Sigla</label>
+                    <input type="text" class="form-control" id="sigla" formControlName="sigla">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="valor">Valor em Minutos</label>
+                    <input type="number" class="form-control" id="valor" formControlName="valor">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group" style="margin-top:25px;">
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+<br />
+<!-- list of moedas -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title"> Moedas </h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th>
+                                Nome
+                            </th>
+                            <th>
+                                Sigla
+                            </th>
+                            <th>
+                                Minutos
+                            </th>
+                            <th>
+                                Ações
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let moeda of moedas">
+                                <td>
+                                    {{moeda.nome}}
+                                </td>
+                                <td>
+                                    {{moeda.sigla}}
+                                </td>
+                                <td>
+                                    {{moeda.valor}}
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary" (click)="editMoeda(moeda)">Editar</button>
+                                    <button class="btn btn-danger" (click)="deleteMoeda(moeda)">Excluir</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
