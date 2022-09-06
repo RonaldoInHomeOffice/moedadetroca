@@ -1,7 +1,6 @@
 {
   "hosting": {
-    "public": "public",
-    "site": "moedadetroca",
+    "public": "y",
     "ignore": [
       "firebase.json",
       "**/.*",
